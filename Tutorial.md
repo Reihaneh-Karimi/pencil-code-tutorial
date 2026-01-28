@@ -195,6 +195,11 @@ Here:
 - ts.t is the simulation time array
 
 - ts.rhopmax is the maximum density at each time step, which also you can plot other parametrs which you have in your `print.in`.
+
+<p align="center">
+  <img src="rhommax.png" width="500">
+</p>
+
 - 
 ### 7.3 Reading Snapshot (VAR) Files
 
@@ -250,6 +255,9 @@ plt.ylabel("y grid")
 plt.title(f"Density map at snapshot {snapshot_index}")
 plt.show()
 ```
+<p align="center">
+  <img src="densitymap.png" width="500">
+</p>
 This visualization is useful for inspecting:
 
 - density structures
