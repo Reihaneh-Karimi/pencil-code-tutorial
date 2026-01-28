@@ -178,7 +178,8 @@ import os
 ### 7.2 Reading Time-Series Data
 
 Time-series quantities (written during the run) can be read from the `data/` directory.
-````
+
+```python
 # Read time series data
 ts = pc.read.ts(datadir='../data')
 
@@ -204,7 +205,7 @@ Here:
 ### 7.3 Reading Snapshot (VAR) Files
 
 Simulation snapshots are stored in var.dat files and can be read as follows:
-```
+```python
 # Read snapshot data
 var = pc.read.var('var.dat', datadir='../data', proc=-1, trimall=True)
 
@@ -223,7 +224,7 @@ The array f typically has the shape:
 ### 7.4 Counting the Number of Snapshots
 
 To determine how many snapshot files were written:
-```
+```python
 numberofvarfiles = len(
     open('../data/proc0/varN.list').readlines()
 ) - 1
@@ -233,7 +234,7 @@ print("Total number of snapshots:", numberofvarfiles)
 ### 7.5 Visualizing 2D Maps (Density Example)
 
 Below is an example of visualizing a 2D density slice using a heatmap.
-```
+```python
 import pencil as pc
 import seaborn as sns
 import pandas as pd
