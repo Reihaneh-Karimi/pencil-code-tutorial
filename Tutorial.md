@@ -209,5 +209,51 @@ f = var.f
 print('Number of snapshots:', len(f))
 print('Array shape:', f.shape)
 ```
+The array f typically has the shape:
+```
+(snapshot, variable, y, x)
+```
+(depending on dimensionality and configuration).
 
+### 7.4 Counting the Number of Snapshots
 
+To determine how many snapshot files were written:
+```
+numberofvarfiles = len(
+    open('../data/proc0/varN.list').readlines()
+) - 1
+
+print("Total number of snapshots:", numberofvarfiles)
+```
+### 7.5 Visualizing 2D Maps (Density Example)
+
+Below is an example of visualizing a 2D density slice using a heatmap.
+```
+import pencil as pc
+import seaborn as sns
+import pandas as pd
+import numpy as np
+import os
+import matplotlib.pyplot as plt
+
+# Select snapshot index
+snapshot_index = 0
+
+# Extract a 2D slice (e.g., density)
+data_2d = f[snapshot_index, 0, :, :]
+
+# Plot using a heatmap
+plt.figure(figsize=(6, 5))
+sns.heatmap(data_2d, cmap="jet")
+plt.xlabel("x grid")
+plt.ylabel("y grid")
+plt.title(f"Density map at snapshot {snapshot_index}")
+plt.show()
+```
+This visualization is useful for inspecting:
+
+- density structures
+
+- instabilities
+
+- spatial evolution of the simulation
