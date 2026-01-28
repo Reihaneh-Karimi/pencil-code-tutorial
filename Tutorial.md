@@ -37,7 +37,7 @@ After checking out the code, make sure you have all the necessary permissions to
 ```
 cd pencil-code
 ```
-2.2 Directory Structure
+### 2.2 Directory Structure
 
 After downloading, the `pencil-code` directory contains:
 
@@ -142,4 +142,72 @@ The run finishes with:
 ```
 Simulation finished after xxxx time-steps
 ```
+-----
+### 5. Troubleshooting & Tips
+
+- If you only modify start.in or run.in, recompilation is not required
+
+- If you change Makefile.local or add physics modules, run pc_build again
+
+- Re-running in the same directory may overwrite data
+
+- Always check param.nml before long runs
+---
+### 6. Next Steps
+
+- Try increasing resolution (nxgrid, nzgrid)
+
+- Enable MPI for multi-processor runs
+
+- Explore visualization tools in python/ or idl/
+
+- Modify physics modules in src/
+
+## 7. Reading and Visualizing Simulation Output (Python)
+
+This section explains how to read Pencil Code simulation outputs and visualize results using **Python**.
+
+### 7.1 Import Required Python Packages
+
+```python
+import pencil as pc              # Pencil Code Python interface
+import matplotlib.pyplot as plt  # Plotting
+import numpy as np
+import os
+```
+### 7.2 Reading Time-Series Data
+
+Time-series quantities (written during the run) can be read from the `data/` directory.
+````
+# Read time series data
+ts = pc.read.ts(datadir='../data')
+
+# Example: plot maximum density vs time
+plt.figure()
+plt.plot(ts.t, ts.rhopmax)
+plt.xlabel("Time")
+plt.ylabel("Maximum density")
+plt.title("Time evolution of maximum density")
+plt.show()
+````
+Here:
+
+- ts.t is the simulation time array
+
+- ts.rhopmax is the maximum density at each time step, which also you can plot other parametrs which you have in your `print.in`.
+- 
+### 7.3 Reading Snapshot (VAR) Files
+
+Simulation snapshots are stored in var.dat files and can be read as follows:
+```
+# Read snapshot data
+var = pc.read.var('var.dat', datadir='../data', proc=-1, trimall=True)
+
+# Extract the field array
+f = var.f
+
+print('Number of snapshots:', len(f))
+print('Array shape:', f.shape)
+```
+
 
