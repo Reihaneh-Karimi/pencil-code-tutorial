@@ -41,17 +41,17 @@ cd pencil-code
 
 After downloading, the `pencil-code` directory contains:
 
-`doc/` – Documentation (build the PDF manual using `make`)
+- `doc/` – Documentation (build the PDF manual using `make`)
 
-`samples/` – Example simulation setups
+- `samples/` – Example simulation setups
 
-`config/` – Configuration files
+- `config/` – Configuration files
 
-`src/` – Core source code
+- `src/` – Core source code
 
-`bin/,` `lib/` – Utility scripts
+- `bin/,` `lib/` – Utility scripts
 
-`idl/`, `python/`, `julia/`, etc. – Data analysis tools
+- `idl/`, `python/`, `julia/`, etc. – Data analysis tools
 
 ----
 
@@ -65,7 +65,7 @@ cd pencil-code
 ###  4.1 Create a Run Directory
 
 Create a new run directory and copy input files from a sample problem
-(here: samples/2d-tests/dark-matter):
+(here: `samples/2d-tests/dark-matter`):
 ```
 mkdir -p /data/myuser/myrun/src
 cd /data/myuser/myrun
@@ -85,17 +85,17 @@ pc_setupsrc
 
 Two configuration files define the simulation setup:
 
-src/Makefile.local – selects the physical modules
+- `src/Makefile.local` – selects the physical modules
 
-src/cparam.local – defines the grid size and number of processors
---
+- `src/cparam.local` – defines the grid size and number of processors
+
 4.3.1 Single-Processor Setup
 
-Example src/Makefile.local:
+Example `src/Makefile.local`:
 ```
 MPICOMM=nompicomm
 ```
-Example src/cparam.local:
+Example `src/cparam.local`:
 ```
 integer, parameter :: ncpus=1,nprocx=1,nprocy=1
 integer, parameter :: nprocz=ncpus/(nprocx*nprocy)
@@ -109,20 +109,20 @@ pc_build
 ```
 4.5 Running the Simulation
 
-Step 1: Initial conditions
-The initial conditions for your simulation are defined in the file start.in.
+- Step 1: Initial conditions
+The initial conditions for your simulation are defined in the file `start.in`.
 
-Step 2: Runtime parameters
-The parameters controlling the main simulation are specified in run.in.
+- Step 2: Runtime parameters
+The parameters controlling the main simulation are specified in `run.in`.
 
-Step 3: Output quantities
-The quantities to be printed to output files are selected in print.in.
+- Step 3: Output quantities
+The quantities to be printed to output files are selected in `print.in`.
 
-Step 4: Create an empty data directory
+- Step 4: Create an empty data directory
 ```
 mkdir data
 ```
-Step 5: Run the simulation
+- Step 5: Run the simulation
 ```
 pc_run
 ```
