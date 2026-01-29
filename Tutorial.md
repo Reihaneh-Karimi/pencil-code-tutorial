@@ -3,7 +3,7 @@
 This tutorial provides a simple, reproducible workflow for running a first simulation with the **Pencil Code**.  
 It is intended for beginners who want to understand how to download, configure, compile, and run a basic example.
 
-The example used here is the **1D Jeans instability test case**.
+The example used here is the **2D Dark Matter test case**.
 
 ---
 
